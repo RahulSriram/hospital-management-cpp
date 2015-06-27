@@ -1,0 +1,147 @@
+PROBLEM DEFINITION:
+
+The project we chose basically focuses on a program used by WE CARE multispecialty hospital, to save patient records, retrieve them and add new patient records, There are 2 basic classes IN and OUT patients respectively 
+It focuses on the date of entry of patient, patient history and bio data of the patients and the diet and medicines prescribed by the doctor.
+The other activities performed by this program is
+Maintenance of patient details (IN/OUT)
+Prescriptions for the patients suggested by the doctor
+Test details to be taken for the patient
+Booking the room for the patient
+Producing the bills at the time of patients departure
+Preparation of reports
+
+
+MAINTENANCE OF PATIENT DETAILS:
+
+The hospital maintains 2 registers called inpatient register and outpatient register. In this register it keeps track of:
+Patient personal details (name, age, address, male/female, patient id no - to be generated automatically)
+Only inpatients will be admitted with allocation of room.
+Outpatients will be prescribed medicines only.
+
+Patients entry form:
+This is only for inpatients, its format will be give in the later sections of this paper
+ 
+Patients prescription:
+For the inpatient the prescribed medicine, test to be taken, the diet, prescribed by the doctor will be recorded in this table.
+
+Bill Register:
+Bill should be prepared for the patient getting discharged and should be updated in the bill register.
+
+Reports needed:
+The formats of the various reports, which are required by management and for the billing are described in the later sections.
+	                     
+Bill:
+Bills are generated at the time of the patient’s discharge. Hospital clerk updates this in the inpatient register with the date of discharge.
+Complete history of the patient
+The complete history of the patient is to be recorded in the hospital records.
+
+Checks and validations:
+The following checks have been incorporated in the given program.
+-Same room should not be allotted for 2 patients
+-Same patient name can exist; medicine and diet to be prescribed should be checked with the doctor name, patient name, problem type and patient number.
+
+Problem Analysis:
+
+‘Roomclass’ is the structure in which the ID number of the patient in the room is stored in. Each object of this structure is an individual room.
+
+‘GlobalID’ is the structure by which automatic ID assignation is done by giving it the value of the next ID number
+
+‘Checks’ is a structure whose objects have variables for checking if user has inputted atleast 1 in & out patient
+
+‘dateclass’ is a structure holding variables d, m, & y and it is used for date operations. It has member functions of ‘systime’ which inputs the computer’s dates, ‘input’ which gets user-input of dates, ‘display’ which displays the d, m and y variables.
+
+’Inpatient’ is an independent class housing the following data members:
+ int id;
+ dateclass dadmin;
+ dateclass ddisch;
+ int roomno;
+ char name[20];
+ char doctor[20];
+ int age;
+ char address[200];
+ char gender;
+ char problem[20];
+ char medicine[20];
+ char diet[100];
+ char test[20];
+ char status[20];
+ char health[20];
+ int roomfee;
+ int labfee;
+ int medicinefee;
+ int testfee;
+ int total;
+ int used;
+
+It also has an ‘input’ function to get all these details
+It has a ‘details’ function to display all the details of the patient
+It has a function ‘billamount’ to calculate the bill for the function, and a function ‘billdisplay’ to display it
+It also has a function ‘discharge’ to discharge details and date of the patient and a function ‘dischargedisplay’ to display the details
+Mainly there is also a function ‘giveroom’ to allocate the room for the patient; in other words this function generates the link between rooms and inpatients.
+It contains ‘giveid’ function which assigns an unique  ID to a new patient.
+
+It contains a function ‘retused’ for returning value of used
+
+It contains a function ‘getname’ for displaying name of patient
+
+It contains a function ‘getid’ for displaying ID no of patient
+
+It has a function ‘empty’ for resetting the values of all datamembers
+
+It has a function ‘emptyrooms’ for resetting values of all rooms to 0
+
+It has a function ‘retroom’ which returns the ID no of patient stored in the selected room.
+
+’outpatient’ is also another independent class housing the following data members:
+ int id;
+ dateclass dvisit;
+ char name[20];
+ int age;
+ char address[200];
+ char gender;
+ char problem[20];
+ char medicine[20];
+ int used;
+
+
+It has an input function, ‘input’ to get the details of the patient
+
+It has a details function, ‘details’ to display the details of the outpatient.
+
+It contains ‘giveid’ function which assigns an unique  ID to a new patient.
+
+It contains a function ‘retused’ for returning value of used
+
+It contains a function ‘getname’ for displaying name of patient
+
+It contains a function ‘getid’ for displaying ID no of patient
+
+It has a function ‘empty’ for resetting the values of all datamembers
+It contains ‘giveid’ function which assigns an unique  ID to a new patient.
+
+
+
+
+Main function:
+ 
+The main function has the following datamembers:
+
+ fstream fh, fr , fg , fc, fcheck;
+ inpatient ip[101];
+ outpatient op[101];
+ char ch, rep;
+ int number, n, i, back;
+
+ it has 100 available inpatient and outpatient slots,
+It is coded in such a way to generate the menu driven program, which has many lines of code to perform
+1.Register In-Patients
+ 2.Register Out-Patients
+ 3.Discharge a Patient
+ 4.View Reports of In-Patients
+ 5.View Reports of Out-Patients
+ 6.Search and view rooms and occupants
+ 7.Backup current Database to file
+ 8.Restore previously backed up database
+ 9.Empty the Database
+
+
